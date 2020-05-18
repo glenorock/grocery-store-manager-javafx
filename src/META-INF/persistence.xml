@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="projetBDPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>alimentation.Categorie</class>
+    <class>alimentation.Gestionnaire</class>
+    <class>alimentation.Fournisseur</class>
+    <class>alimentation.Facture</class>
+    <class>alimentation.Lignefacture</class>
+    <class>alimentation.Produit</class>
+    <class>alimentation.Client</class>
+    <class>alimentation.Gestionstock</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/boutiq14_mbogni?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="17p180OtangGlenOrock1999"/>
+    </properties>
+  </persistence-unit>
+</persistence>

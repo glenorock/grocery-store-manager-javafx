@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="800.0" prefWidth="1280.0" styleClass="background-Pane" stylesheets="@../styles/login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.LogInController">
+   <children>
+      <VBox alignment="CENTER" fillWidth="false" maxHeight="400.0" maxWidth="400.0" opacity="0.85" prefHeight="313.0" prefWidth="573.0" spacing="15.0" styleClass="vbox">
+         <children>
+            <Label text="User Name">
+               <font>
+                  <Font name="Cookie-Regular" size="30.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="userNameField" alignment="CENTER" focusColor="GREEN" />
+            <Label text="Password">
+               <font>
+                  <Font name="Cookie-Regular" size="30.0" />
+               </font>
+            </Label>
+            <JFXPasswordField fx:id="passwordField" alignment="CENTER" focusColor="GREEN" />
+            <Pane prefHeight="38.0" prefWidth="400.0" />
+            <JFXButton fx:id="logInButton" onAction="#logIn" prefWidth="150.0" text="LogIn" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
+         </padding>
+         <StackPane.margin>
+            <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+         </StackPane.margin>
+      </VBox>
+   </children>
+</StackPane>

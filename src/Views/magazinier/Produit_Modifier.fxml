@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="805.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.magazinier.Produit_ModifierController">
+   <children>
+      <VBox alignment="CENTER_RIGHT" prefWidth="300.0" spacing="15.0" AnchorPane.bottomAnchor="75.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="image" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER">
+               <image>
+                  <Image url="@images_produits/default.jpeg" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
+               <children>
+                  <Label text="Changer L'image " textFill="DARKSLATEGRAY">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="change" contentDisplay="GRAPHIC_ONLY" onAction="#changeImage" style="-fx-background-color: darkslategrey;">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../styles/icons8_camera_32.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <TextArea fx:id="desc" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+      <GridPane hgap="50.0" prefWidth="400.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Prix Achat" textFill="DARKSLATEGRAY" GridPane.rowIndex="5">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="26.0" text="Quantité en Stock" textFill="DARKSLATEGRAY" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="26.0" text="Fournisseur" textFill="DARKSLATEGRAY" GridPane.rowIndex="3">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="26.0" text="Categorie" textFill="DARKSLATEGRAY" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="26.0" text="Nom Produit" textFill="DARKSLATEGRAY" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="26.0" text="Etat" textFill="DARKSLATEGRAY" GridPane.rowIndex="8">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="26.0" text="Date d'Insertion" textFill="DARKSLATEGRAY" GridPane.rowIndex="7">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="26.0" text="Prix Vente" textFill="DARKSLATEGRAY" GridPane.rowIndex="6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="393.0" text="Code Produit" textFill="DARKSLATEGRAY">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="code" layoutX="109.0" layoutY="332.0" text="Code goes here" textFill="DARKSLATEGRAY" GridPane.columnIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cat" prefWidth="200.0" promptText="categorie" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="four" layoutX="223.0" layoutY="148.0" prefWidth="200.0" promptText="Fournisseur" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="qte" layoutX="223.0" layoutY="26.0" text="qte goes here" textFill="DARKSLATEGRAY" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="cost" text="cost price goes here" textFill="DARKSLATEGRAY" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="date" text="insertion date goes here" textFill="DARKSLATEGRAY" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="sell" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <JFXToggleButton fx:id="state" alignment="CENTER_LEFT" contentDisplay="RIGHT" onAction="#changeState" text="Actif" toggleColor="DARKSLATEGRAY" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="50.0" stylesheets="@../../styles/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton fx:id="ok" layoutX="696.0" layoutY="20.0" onAction="#valider" prefHeight="40.0" prefWidth="100.0" styleClass="validation-button" text="OK" />
+            <JFXButton fx:id="apply" layoutX="665.0" layoutY="15.0" onAction="#apply" prefHeight="40.0" prefWidth="100.0" styleClass="appercu-button" text="Apply" />
+            <JFXButton fx:id="cancel" layoutX="665.0" layoutY="15.0" onAction="#cancel" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-button" text="Cancel" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+</AnchorPane>

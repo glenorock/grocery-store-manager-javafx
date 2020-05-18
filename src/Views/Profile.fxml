@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane styleClass="main-pane" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.ProfileController">
+   <children>
+      <GridPane id="box" alignment="CENTER" hgap="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" stylesheets="@../styles/Style.css" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <padding>
+            <Insets bottom="50.0" left="20.0" right="20.0" top="50.0" />
+         </padding>
+         <children>
+            <Label nodeOrientation="LEFT_TO_RIGHT" text="ID" textAlignment="CENTER" textFill="#2a2e37">
+               <font>
+                  <Font name="Cookie-Regular" size="50.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="logiinMod" buttonType="RAISED" onAction="#modLogin" styleClass="activation-button" text="Modifier" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <JFXButton fx:id="pwdMod" buttonType="RAISED" onAction="#Modpwd" styleClass="activation-button" text="Modifier" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label layoutX="158.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" text="NOM ET PRENOM" textAlignment="CENTER" textFill="#2a2e37" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Cookie-Regular" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="158.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" text="Type de Compte" textAlignment="CENTER" textFill="#2a2e37" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Cookie-Regular" size="50.0" />
+               </font>
+            </Label>
+            <Label layoutX="158.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" text="Nom Utilisateur" textAlignment="CENTER" textFill="#2a2e37" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Cookie-Regular" size="50.0" />
+               </font>
+            </Label>
+            <Label layoutX="158.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" text="Mot de Passe" textAlignment="CENTER" textFill="#2a2e37" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Cookie-Regular" size="50.0" />
+               </font>
+            </Label>
+            <Label fx:id="id" layoutX="158.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="special-label" text="id" textAlignment="CENTER" textFill="#2a2e37" GridPane.columnIndex="1">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="nom" layoutX="158.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="special-label" text="nom" textAlignment="CENTER" textFill="#2a2e37" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="type" layoutX="158.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="special-label" text="type" textAlignment="CENTER" textFill="#2a2e37" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="login" layoutX="158.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="special-label" text="login" textAlignment="CENTER" textFill="#2a2e37" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="pwd" layoutX="537.0" layoutY="380.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="special-label" text="pwd" textAlignment="CENTER" textFill="#2a2e37" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="profile" />
+            <String fx:value="box" />
+         </styleClass>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+</StackPane>

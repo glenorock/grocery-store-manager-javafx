@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Gestionnaire.EmployesController">
+   <children>
+      <GridPane fx:id="root" alignment="CENTER" stylesheets="@../../styles/Style.css">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" percentHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="96.0" valignment="CENTER" vgrow="ALWAYS" />
+         </rowConstraints>
+         <children>
+            <TableView id="box" fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="1211.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="nameCol" prefWidth="75.0" text="Nom" />
+                <TableColumn fx:id="userCol" prefWidth="75.0" text="Nom Utilisateur" />
+                  <TableColumn fx:id="pwdCol" prefWidth="75.0" text="Mot de Passe" />
+                  <TableColumn fx:id="typeCol" prefWidth="75.0" text="Type Compte" />
+                  <TableColumn fx:id="activeCol" prefWidth="75.0" text="Actif" />
+                  <TableColumn fx:id="actionCol" prefWidth="75.0" sortable="false" text="Activation/Desactivation" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <padding>
+                  <Insets top="25.0" />
+               </padding>
+            </TableView>
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <JFXTextField fx:id="search" focusColor="DARKSLATEGRAY" labelFloat="true" prefWidth="200.0" promptText="search" />
+                  <JFXComboBox fx:id="using" focusColor="DARKSLATEGRAY" labelFloat="true" prefWidth="200.0" promptText="using" />
+                  <JFXButton fx:id="butSearch" buttonType="RAISED" onAction="#search" styleClass="search" text="Rechercher" />
+                  <JFXButton fx:id="annuler" buttonType="RAISED" onAction="#annuler" styleClass="cancel" text="Annuler" />
+                  <Label fx:id="ajout" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#ajout" text="Ajout" textFill="DARKSLATEGRAY">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../styles/icons8_add_32.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets right="25.0" />
+               </padding>
+            </HBox>
+         </children>
+         <styleClass>
+            <String fx:value="box" />
+            <String fx:value="can-search" />
+         </styleClass>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+         <StackPane.margin>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </StackPane.margin>
+      </GridPane>
+   </children>
+</StackPane>
