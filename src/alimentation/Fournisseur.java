@@ -86,13 +86,13 @@ public class Fournisseur implements Serializable ,EntityClasses {
         hash += (codeFour != null ? codeFour.hashCode() : 0);
         return hash;
     }
-
+    /*
     @Override
     public boolean equals(Object object) {
         Fournisseur other = (Fournisseur) object;
         return this.codeFour.intValue() == other.codeFour.intValue();
     }
-
+    */
     @Override
     public String toString() {
         return this.getNom();

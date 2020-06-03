@@ -232,18 +232,7 @@ public class ProduitController {
                     }
                 }
             });
-            controller.image.setOnMouseClicked(new EventHandler() {
-                @Override
-                public void handle(Event event) {
-                    try {
-                        controller.details();
-                        show_Allproduits();
-                    } catch (IOException ex) {
-                        System.out.println(ex.getMessage());
-                    }
-                    
-                }
-            });
+            
             displayArea.getChildren().add(grid);
             ObservableList<Categorie> datac = FXCollections.observableArrayList(Categorie.getCategories());
             categorie.setItems(datac);

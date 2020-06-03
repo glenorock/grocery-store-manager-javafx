@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import Views.Constants;
 
 public class Produit_SingleViewController {
 
@@ -46,13 +47,13 @@ public class Produit_SingleViewController {
 
     public Produit product = new Produit();
     
-    private final String imagePath = "C:\\Users\\jhy\\Documents\\NetBeansProjects\\projetBD\\src\\Views\\magazinier\\images_produits\\";
+    private final String imagePath = Constants.Products_Image_Path;
     
     void set() throws FileNotFoundException{
-        code.setText(product.getCodePro().toString()); 
+        code.setText("N° "+product.getCodePro().toString()); 
         nom.setText(product.getNomPro());
         try{
-            FileInputStream inputstream = new FileInputStream(imagePath + product.getNomPro() + ".jpg"); 
+            FileInputStream inputstream = new FileInputStream(imagePath + product.getCodePro().toString() + ".jpg"); 
             Image pro_image = new Image(inputstream); 
             image.setImage(pro_image);
         }catch(Exception e){
@@ -65,22 +66,6 @@ public class Produit_SingleViewController {
         qte.setText(""+product.getQte());
         
     }
-    
-    void details() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Produit_Modifier.fxml"));
-        Parent parent = fxmlLoader.load();
-        Produit_ModifierController controller = fxmlLoader.<Produit_ModifierController>getController();
-        controller.product = this.product;
-        controller.init();
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.showAndWait();
-    }
-    
-    
     
     @FXML
     void initialize() {

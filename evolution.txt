@@ -1,7 +1,7 @@
-Categorie*			Mario
-Produit - detailled view	Glen
-Facturation*		Matip
-Historiques*		Damaris
-Bilan*			Glen
-Commande Produit*		Madjio
-Consultation Stock*		Mario
+Categorie*			
+Produit - detailled view	
+Facturation*		
+Historiques*		
+Bilan*		
+Commande Produit*	
+Consultation Stock*	

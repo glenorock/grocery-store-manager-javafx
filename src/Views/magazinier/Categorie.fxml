@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -50,7 +51,7 @@
                   <TilePane fx:id="displayArea" hgap="100.0" prefColumns="4" prefRows="2" vgap="100.0">
                      <padding>
                         <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-                     </padding>
+                     </padding> 
                   </TilePane>
                </content>
             </ScrollPane>

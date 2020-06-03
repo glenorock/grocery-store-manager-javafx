@@ -114,20 +114,12 @@ public class Produit_ModifierController {
     
     private void set(){
         
-        datac.stream().filter((cate) -> (product.getIdCategorie().equals(cate))).forEachOrdered((cate) -> {
-            System.out.println(cate);
-           // cat.setValue(cate);
-        });
-        dataf.stream().filter((fourr) -> (product.getCodeFour().equals(fourr))).forEachOrdered((fourr) -> {
-            System.out.println(fourr);
-        });
-        
         code.setText(product.getId().toString());
         nom.setText(product.getNomPro());
         qte.setText(""+product.getQte());
         cost.setText(""+product.getPrixAchat());
         sell.setText(""+ product.getPrixVente());
-        date.setText(""+product.getDateInsertion().getTime());
+        date.setText(""+product.getDateInsertion().toString());
         desc.setText(product.getDescription());
         state.setSelected(product.getActif());
         changeState(new ActionEvent());

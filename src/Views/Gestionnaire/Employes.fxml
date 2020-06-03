@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -47,7 +46,6 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="30.0">
                <children>
                   <JFXTextField fx:id="search" focusColor="DARKSLATEGRAY" labelFloat="true" prefWidth="200.0" promptText="search" />
-                  <JFXComboBox fx:id="using" focusColor="DARKSLATEGRAY" labelFloat="true" prefWidth="200.0" promptText="using" />
                   <JFXButton fx:id="butSearch" buttonType="RAISED" onAction="#search" styleClass="search" text="Rechercher" />
                   <JFXButton fx:id="annuler" buttonType="RAISED" onAction="#annuler" styleClass="cancel" text="Annuler" />
                   <Label fx:id="ajout" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#ajout" text="Ajout" textFill="DARKSLATEGRAY">

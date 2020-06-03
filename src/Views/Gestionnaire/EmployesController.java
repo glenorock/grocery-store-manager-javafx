@@ -62,9 +62,7 @@ public class EmployesController implements Initializable {
     @FXML
     private JFXTextField search;
 
-    @FXML
-    private JFXComboBox<String> using;
-
+    
     @FXML
     private JFXButton butSearch;
 
@@ -77,8 +75,7 @@ public class EmployesController implements Initializable {
     @FXML
     private Label ajout;
     
-    private ObservableList<Gestionnaire> data = FXCollections.observableList(Gestionnaire.getGestionnaires());
-        
+    private ObservableList<Gestionnaire> data ;
     @FXML
     void annuler(ActionEvent event) {
         setData();
@@ -94,33 +91,19 @@ public class EmployesController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
+        setData();
     }
 
     @FXML
     void search(ActionEvent event) {
-        table.setItems(data);
-        String cond = using.getValue();
         String key = search.getText();
-        table.getSelectionModel().select(table.getItems().size());
-        if(key == null) return;
-        switch(cond){
-            case "Nom":
-                data.stream()
-                        .filter(item -> (item.getNomGest().contains(key)))
-                        .findAny()
-                        .ifPresent(item -> {
-                            table.getSelectionModel().select(item);
-                            table.scrollTo(item);    
-                        });
-                table.setItems(data.filtered(item -> item.getNomGest().contains(key)));
-                break;
-            case "Nom Utilisateur":
-                table.setItems(data.filtered(item -> item.getLogin().contains(key)));
-                break;
-            default:
-                table.setItems(data.filtered(item -> (item.getLogin().contains(key)) || item.getNomGest().contains(key)));
-                break;
-        }
+        setData();
+        if(key == null || "".equals(key)) return;
+        table.setItems(data.filtered(item -> 
+                (item.getNomGest().toLowerCase().contains(key.toLowerCase())) ||
+                (item.getLogin().toLowerCase().contains(key.toLowerCase())) ||
+                (item.getType().toLowerCase().contains(key.toLowerCase()))
+        )); 
     }
     
     private void setColumns(){
@@ -209,17 +192,8 @@ public class EmployesController implements Initializable {
     }
     
     private void setData(){
-        table.getItems().clear();
+        data = FXCollections.observableList(Gestionnaire.getGestionnaires());
         table.setItems(data);
-        ObservableList<String> sdata = FXCollections.observableArrayList();
-        sdata.addAll(
-                "Tous",
-                "Nom",
-                "Nom Utilisateur"
-        );
-        this.using.getItems().clear();
-        using.setItems(sdata);
-        using.setValue("Tous");
         search.setText(null );
     }
     /**

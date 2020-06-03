@@ -10,6 +10,8 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -272,6 +274,12 @@ public class Produit implements Serializable ,EntityClasses{
         EntityManager em = emf.createEntityManager();
         TypedQuery<Produit> query = em.createQuery("select p from Produit p",Produit.class);
         return query.getResultList();
+    }
+    
+    public static Produit getProduitByName(String name){
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Produit> query = em.createQuery("Select c from Produit c where c.nomPro = :name",Produit.class).setParameter("name",name);
+        return query.getSingleResult();
     }
     
     public void changeSellingPrice(Integer prix){

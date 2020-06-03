@@ -96,11 +96,11 @@ public class Categorie implements Serializable ,EntityClasses {
     }
 
     @Override
-    public boolean equals(Object object) {
-        Categorie other = (Categorie) object;
-        return this.idCat.intValue()==other.idCat.intValue();
+    public boolean equals(Object obj) {
+        return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    
     @Override
     public String toString() {
         return this.nomCat;

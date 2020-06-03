@@ -1,5 +1,6 @@
 package Views.magazinier;
 
+import Views.Constants;
 import alimentation.Categorie;
 import alimentation.EntityClasses;
 import alimentation.Fournisseur;
@@ -61,7 +62,7 @@ public class Produit_AjoutController {
     @FXML
     private JFXButton cancel;
     
-    private final String imagePath = "C:\\Users\\jhy\\Documents\\NetBeansProjects\\projetBD\\src\\Views\\magazinier\\images_produits\\";
+    private final String imagePath = Constants.Products_Image_Path;
     
     public void add() {
         try{
@@ -74,8 +75,9 @@ public class Produit_AjoutController {
                 (Categorie)cat.getValue()
             ));
             if(changedImage){
+                Produit pro = Produit.getProduitByName(name.getText());
                 File source = new File(imageFile);
-                File dest = new File(imagePath + name.getText() + ".jpg");
+                File dest = new File(imagePath + pro.getCodePro() + ".jpg");
                 dest.createNewFile();
                 FileInputStream fis = new FileInputStream(source);
                 FileOutputStream fos = new FileOutputStream(dest);
