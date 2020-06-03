@@ -132,7 +132,7 @@ public class MainSceneController {
     @FXML
     void show_stocks(ActionEvent event) {
         task.setText("Stocks");
-        goTo("Stock.fxml",event);
+        goTo("..\\magazinier\\Stock.fxml",event);
     }
     
     @FXML

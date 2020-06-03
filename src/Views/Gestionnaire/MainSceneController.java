@@ -158,7 +158,7 @@ public class MainSceneController implements Initializable {
     @FXML
     void show_Stock(ActionEvent event){
         task.setText("Stock");
-        goTo("../caissiere/Stock.fxml",event);
+        goTo("..\\magazinier\\Stock.fxml",event);
     }
     
     @FXML
