@@ -163,6 +163,7 @@ public class EmployesController implements Initializable {
                             Gestionnaire gest = getTableView().getItems().get(getIndex());
                             gest.toggleActivate();
                             setData();
+                            setColumns();
                         });
                     }
                     
@@ -175,6 +176,7 @@ public class EmployesController implements Initializable {
                             Gestionnaire gest = getTableView().getItems().get(getIndex());
                             if(gest.isActif()) btn.setText("Desactiver");
                             else btn.setText("Activer");
+                            
                             setGraphic(btn);
                         }
                     }

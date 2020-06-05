@@ -1,7 +1,5 @@
-Categorie*			
+Categorie- detailed view		
 Produit - detailled view	
 Facturation*		
-Historiques*		
+Historiques--next		
 Bilan*		
-Commande Produit*	
-Consultation Stock*	

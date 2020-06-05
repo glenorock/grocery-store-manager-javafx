@@ -89,9 +89,9 @@ public class Produit_AjoutController {
             }
         }catch(IOException | NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText(e.toString());
-                alert.setHeaderText(null);
-                alert.showAndWait();
+            alert.setContentText(e.toString());
+            alert.setHeaderText(null);
+            alert.showAndWait();
         }
     }
 

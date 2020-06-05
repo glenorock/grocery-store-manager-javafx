@@ -39,7 +39,7 @@ public class Produit_SingleViewController {
     @FXML
     public JFXButton reduce;
 
-    public Produit product = new Produit();
+    public Produit product;
     
     private final String imagePath = Constants.Products_Image_Path;
     

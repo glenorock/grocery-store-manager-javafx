@@ -134,7 +134,6 @@ public class ProduitController {
             VBox grid = loader.load();
             Produit_SingleViewController controller = loader.getController();
             controller.product = item;
-            controller.product = item;
             controller.set();
             controller.add.setOnAction(new EventHandler() {
                 @Override
@@ -234,9 +233,9 @@ public class ProduitController {
             });
             
             displayArea.getChildren().add(grid);
-            ObservableList<Categorie> datac = FXCollections.observableArrayList(Categorie.getCategories());
-            categorie.setItems(datac);
         }
+        ObservableList<Categorie> datac = FXCollections.observableArrayList(Categorie.getCategories());
+        categorie.setItems(datac);
             
     }
     

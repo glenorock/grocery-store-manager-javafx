@@ -19,7 +19,7 @@ public class Constants {
     /**
      *  Absolute path for the folder containing the category images
      */
-    public final static String Category_Image_Path = "";
+    public final static String Category_Image_Path = "C:\\Users\\jhy\\Documents\\NetBeansProjects\\projetBD\\src\\Views\\magazinier\\images_categories\\";
 
     /**
      *  Absolute path for the logo file
