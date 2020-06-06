@@ -5,14 +5,18 @@
  */
 package alimentation;
 
+import static alimentation.EntityClasses.emf;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +28,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.TypedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -185,7 +190,7 @@ public class Facture implements Serializable,EntityClasses,Transaction {
 
     @Override
     public String toString() {
-        return "alimentation.Facture[ idFac=" + idFac + " ]";
+        return "Facture Numero: " + idFac ;
     }
 
     @Override
@@ -193,4 +198,43 @@ public class Facture implements Serializable,EntityClasses,Transaction {
         return this.idFac;
     }
     
+    public Facture(BigDecimal montant, BigDecimal remise, boolean typeFac, Client clientidClient, Gestionnaire idCaissiere) {
+        this.idFac = null;
+        this.dateFac = new Date();
+        this.remise = remise;
+        this.montant = montant;
+        this.typeFac = typeFac;
+        this.clientidClient = clientidClient;
+        this.idCaissiere = idCaissiere;
+    }
+    
+    public static List<Facture> getFactures(){
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Facture> query;
+        query = em.createQuery("select f from Facture f",Facture.class);
+        return query.getResultList();
+    }
+    
+    
+    public static Comparator<Facture> sortByIddesc = new Comparator<Facture>() {
+        @Override
+        public int compare(Facture o1, Facture o2) {
+            return o2.getId() - o1.getId();
+        }
+    };
+    
+    public static Facture getMostRecent(){
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Facture> query;
+        query = em.createQuery("select f from Facture f order by f.idFac desc",Facture.class);
+        return query.getSingleResult();
+    }
+    
+    public double getTotal(){
+        double total = 0;
+        for(Lignefacture l: this.lignefactureCollection){
+            total = total + l.getPrix().doubleValue();
+        }
+        return total;
+    }
 }

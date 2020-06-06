@@ -136,5 +136,13 @@ public class Lignefacture implements Serializable ,EntityClasses{
     public Integer getId() {
         return this.idLFac;
     }
-    
+
+    public Lignefacture(short qte, Produit codePro, Facture idFac) {
+        this.idLFac = null;
+        this.prix = new BigDecimal(qte * codePro.getPrixVente());
+        this.qte = qte;
+        this.codePro = codePro;
+        this.idFac = idFac;
+    }
+   
 }

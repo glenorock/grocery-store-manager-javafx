@@ -1,5 +1,2 @@
-Categorie- detailed view		
-Produit - detailled view	
-Facturation*		
-Historiques--next		
+Facturation*	
 Bilan*		

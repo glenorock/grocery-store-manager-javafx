@@ -238,3 +238,10 @@
 .display-area{
     -fx-background-color:white;
 }
+
+.tile{
+    -fx-background-color: white;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.5),25,0.1,0,0);
+}

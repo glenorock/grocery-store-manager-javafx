@@ -144,7 +144,7 @@ public class Client implements Serializable,EntityClasses {
 
     @Override
     public String toString() {
-        return "alimentation.Client[ idClient=" + idClient + " ]";
+        return this.nom;
     }
 
     @Override

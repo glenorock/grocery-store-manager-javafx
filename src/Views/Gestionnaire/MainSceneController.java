@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -29,7 +28,6 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -139,7 +137,7 @@ public class MainSceneController implements Initializable {
     @FXML
     void show_bilan(ActionEvent event) {
         task.setText("Bilan");
-        goTo("Bilan.fxml",event);
+        goTo("Statistiques.fxml",event);
     }
 
 
@@ -151,8 +149,8 @@ public class MainSceneController implements Initializable {
 
     @FXML
     void show_historiques(ActionEvent event) {
-        task.setText("Histroriques");
-        goTo("Historique.fxml",event);
+        task.setText("Histroriques Des Ventes");
+        goTo("..\\caissiere\\HistoriqueVentes.fxml",event);
     }
 
     @FXML

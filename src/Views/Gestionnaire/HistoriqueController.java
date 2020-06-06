@@ -16,7 +16,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 
 public class HistoriqueController {
@@ -118,8 +117,8 @@ public class HistoriqueController {
                 "Mois",
                 "Année"
         );
+        filter.getItems().clear();
         filter.setItems(dataf);
-        
         data = FXCollections.observableArrayList(Gestionstock.getTransactions());
         data.sort(Gestionstock.sortByIddesc);
         table.setItems(data);

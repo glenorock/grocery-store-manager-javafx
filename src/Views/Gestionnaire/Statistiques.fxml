@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="CENTER_RIGHT" spacing="15.0" stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.Gestionnaire.StatistiquesController">
+   <children>
+      <HBox alignment="CENTER_RIGHT" spacing="50.0" VBox.vgrow="NEVER">
+         <padding>
+            <Insets left="50.0" right="50.0" />
+         </padding>
+         <children>
+            <HBox prefHeight="100.0" style="-fx-background-color: white;" styleClass="tile" HBox.hgrow="ALWAYS">
+               <children>
+                  <StackPane prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: blue;">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../styles/icons8_receive_cash_32.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label fx:id="sales_today" text="Amount" textFill="DARKSLATEGRAY">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="47.0" text="Today's Sale" textFill="DARKSLATEGRAY">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox layoutX="60.0" layoutY="10.0" prefHeight="100.0" style="-fx-background-color: white;" styleClass="tile" HBox.hgrow="ALWAYS">
+               <children>
+                  <StackPane prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #00ff22;">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../styles/icons8_receipt_32.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label fx:id="sales_month" text="Amount" textFill="DARKSLATEGRAY">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="47.0" text="This Month's Sale" textFill="DARKSLATEGRAY">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox layoutX="60.0" layoutY="10.0" prefHeight="100.0" style="-fx-background-color: white;" styleClass="tile" HBox.hgrow="ALWAYS">
+               <children>
+                  <StackPane prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: orange;">
+                     <children>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../styles/icons8_cashbook_32.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label fx:id="sales_year" text="Amount" textFill="DARKSLATEGRAY">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="47.0" text="This Year's Sale" textFill="DARKSLATEGRAY">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <JFXButton fx:id="refresh" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#refresh" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../styles/icons8_refresh_32.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <ripplerFill>
+                  <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="BLUE" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+            </JFXButton>
+         </children>
+      </HBox>
+      <GridPane hgap="10.0" vgap="10.0" VBox.vgrow="ALWAYS">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="50.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" percentHeight="50.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="tile" GridPane.rowIndex="1">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label text="Evolution" textFill="DARKSLATEGRAY" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <AreaChart fx:id="evolution_chart" layoutX="-89.0" layoutY="-65.0" title="Evoultion" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </AreaChart>
+                  <HBox alignment="CENTER_RIGHT" spacing="50.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXDatePicker fx:id="evolution_start" editable="false" onAction="#setEvolution" promptText="From" showWeekNumbers="true">
+                           <defaultColor>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLUE" />
+                                    <Stop color="RED" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </defaultColor>
+                        </JFXDatePicker>
+                        <JFXDatePicker fx:id="evolution_stop" editable="false" onAction="#setEvolution" promptText="To" showWeekNumbers="true">
+                           <defaultColor>
+                              <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="BLUE" />
+                                    <Stop color="RED" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </defaultColor>
+                        </JFXDatePicker>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="tile">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label text="Sales" textFill="DARKSLATEGRAY" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <BarChart fx:id="sales_chart" layoutX="-32.0" layoutY="-87.0" legendSide="RIGHT" title="Sales " AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <JFXComboBox fx:id="sales_period" onAction="#setSales" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <focusColor>
+                        <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLUE" />
+                              <Stop color="RED" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </focusColor>
+                  </JFXComboBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="tile" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label text="Participation of Categories" textFill="DARKSLATEGRAY" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <PieChart fx:id="participation_pie" layoutX="10.0" layoutY="-46.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="tile" GridPane.columnIndex="1">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label text="Top Products" textFill="DARKSLATEGRAY" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutX="20.0" layoutY="50.0" spacing="50.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+                     <children>
+                        <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Top Selling" textFill="DARKSLATEGRAY" VBox.vgrow="NEVER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <JFXListView fx:id="top_selling_list" styleClass="tile" verticalGap="50.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Top Profit Earner" textFill="DARKSLATEGRAY" VBox.vgrow="NEVER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <JFXListView fx:id="top_profit_list" styleClass="tile" verticalGap="50.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+   </padding>
+</VBox>
