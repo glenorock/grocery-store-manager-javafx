@@ -237,4 +237,9 @@ public class Facture implements Serializable,EntityClasses,Transaction {
         }
         return total;
     }
+    
+    public double received(){
+        return this.montant.doubleValue() - this.remise.doubleValue();
+    }
+    
 }

@@ -206,11 +206,7 @@ public class Produit implements Serializable ,EntityClasses{
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        Produit other = (Produit) object;
-        return this.codePro.intValue()== other.codePro.intValue();
-    }
+    
 
     @Override
     public String toString() {
@@ -310,6 +306,17 @@ public class Produit implements Serializable ,EntityClasses{
         em.close();
     }
 
+    public int numberOfSales(){
+        int number = 0;
+        for(Lignefacture ligne: this.lignefactureCollection){
+            number = ligne.getQte() + number;
+        }
+        return number;
+    }
+    
+    public double profitMade(){
+        return this.numberOfSales() * (this.prixVente-this.prixAchat);
+    }
     
     public static Comparator<Produit> sortByIdAsc = new Comparator<Produit>() {
         @Override
@@ -325,6 +332,20 @@ public class Produit implements Serializable ,EntityClasses{
         }
     };
     
+    public static Comparator<Produit> sortBySales = new Comparator<Produit>() {
+        @Override
+        public int compare(Produit o1, Produit o2) {
+            int ans = o2.numberOfSales() - o1.numberOfSales();
+            return ans;
+        }
+    };
+    
+    public static Comparator<Produit> sortByProfitMade = new Comparator<Produit>() {
+        @Override
+        public int compare(Produit o1, Produit o2) {
+            return Double.valueOf(o2.profitMade() - o1.profitMade()).intValue();
+        }
+    };
     
     
     

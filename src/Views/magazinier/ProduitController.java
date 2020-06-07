@@ -25,7 +25,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -34,7 +33,6 @@ import java.io.FileNotFoundException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -241,7 +239,7 @@ public class ProduitController {
     
     void show_Allproduits() throws IOException{
         data = FXCollections.observableList(Produit.getProduits());
-        data.sort(Produit.sortByIdDesc);
+        data.sort(Produit.sortBySales);
         show_produits(data);
     }
     

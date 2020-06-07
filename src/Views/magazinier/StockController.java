@@ -139,7 +139,7 @@ public class StockController {
     
     void setData(){
         data = FXCollections.observableArrayList(Produit.getProduits());
-        data.sort(Produit.sortByIdDesc);        
+        data.sort(Produit.sortBySales);        
         table.setItems(data);
     }
 

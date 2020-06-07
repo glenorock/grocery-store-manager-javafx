@@ -139,4 +139,11 @@ public class Categorie implements Serializable ,EntityClasses {
         this.nomCat = nomCat;
     }
     
+    public double contribution(){
+        double cont = 0;
+        for(Produit pro: this.produitCollection){
+            cont = cont + pro.profitMade();
+        }
+        return cont;
+    } 
 }
