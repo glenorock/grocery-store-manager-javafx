@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import Views.Constants;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class Produit_SingleViewController {
 
@@ -27,9 +29,16 @@ public class Produit_SingleViewController {
     private Label nom;
     
     @FXML
-    private Label qte;
+    public Label qte;
     
+    
+    @FXML
+    public VBox vbox;
+    
+    @FXML
+    public HBox buttons;
 
+    
     @FXML
     public ImageView image;
 
@@ -43,7 +52,7 @@ public class Produit_SingleViewController {
     
     private final String imagePath = Constants.Products_Image_Path;
     
-    void set() throws FileNotFoundException{
+    public void set() throws FileNotFoundException{
         code.setText("N° "+product.getCodePro().toString()); 
         nom.setText(product.getNomPro());
         try{

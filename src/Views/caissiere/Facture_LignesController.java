@@ -28,13 +28,13 @@ public class Facture_LignesController {
     private URL location;
 
     @FXML
-    private Label date;
+    public Label date;
 
     @FXML
-    private Label numero;
+    public Label numero;
 
     @FXML
-    private Label client;
+    public Label client;
 
     @FXML
     private TableView<Lignefacture> table;
@@ -55,11 +55,11 @@ public class Facture_LignesController {
     private TableColumn<Lignefacture, Double> total;
 
     @FXML
-    private Label montant;
+    public Label montant;
     
     public Facture facture;
     
-    private ObservableList<Lignefacture> data;
+    public ObservableList<Lignefacture> data;
     
     void init(){
         setData();
@@ -68,8 +68,11 @@ public class Facture_LignesController {
         client.setText("Reçu par: " + facture.getClientidClient().toString());
         if("default".equals(facture.getClientidClient().toString())) client.setVisible(false);
         montant.setText(""+facture.getTotal()); 
+        setColumns();
         
         
+    }
+    void setColumns(){
         Callback<TableColumn<Lignefacture,Void>,TableCell<Lignefacture,Void>> imageCell = new Callback() {
             @Override
             public TableCell<Lignefacture,Void> call(Object param) {
@@ -133,6 +136,10 @@ public class Facture_LignesController {
     }
     void setData(){
         data = FXCollections.observableArrayList(facture.getLignefactureCollection());
+        table.setItems(data);
+    }
+    void set(){
+        data = FXCollections.observableArrayList();
         table.setItems(data);
     }
     @FXML

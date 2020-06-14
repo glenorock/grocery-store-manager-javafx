@@ -53,9 +53,6 @@ public class MainSceneController {
     private Label task; 
     
     @FXML
-    private JFXButton produit;
-    
-    @FXML
     private JFXButton categorie;
     
     @FXML
@@ -164,5 +161,6 @@ public class MainSceneController {
     void initialize() {
         this.userNameLabel.setText(LogInController.user.getNomGest());
         show_facturation(new ActionEvent());
+        
     }
 }

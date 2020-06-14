@@ -65,6 +65,8 @@ public class MainSceneController implements Initializable {
     
     @FXML
     private JFXButton clients;
+    @FXML
+    private JFXButton stocks;
     
     @FXML
     private Label task;
@@ -152,6 +154,13 @@ public class MainSceneController implements Initializable {
         task.setText("Histroriques Des Ventes");
         goTo("..\\caissiere\\HistoriqueVentes.fxml",event);
     }
+    
+    @FXML
+    void show_gesTionStocks(ActionEvent event) {
+        task.setText("Historique de Gestion de Stocks");
+        goTo("Historique.fxml",event);
+    }
+    
 
     @FXML
     void show_Stock(ActionEvent event){

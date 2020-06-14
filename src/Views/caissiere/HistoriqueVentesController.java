@@ -1,10 +1,8 @@
 package Views.caissiere;
 
-import Views.magazinier.Categorie_AjoutController;
 import alimentation.Client;
 import alimentation.Facture;
 import alimentation.Gestionnaire;
-import alimentation.Gestionstock;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
@@ -156,7 +154,8 @@ public class HistoriqueVentesController {
         filter.getItems().clear();
         filter.setItems(dataf);
         data = FXCollections.observableArrayList(Facture.getFactures());
-        table.setItems(data);
+        data.sort(Facture.sortByMostRecent); 
+        table.setItems(data); 
         
     }
     

@@ -189,4 +189,15 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
         }
     };
     
+    @Override
+    public double trans() {
+        return -1*this.getQte() * this.codePro.getPrixAchat();
+    }
+    
+    @Override
+    public Date getDate(){
+        return this.dateStock;
+    }
+    
+    
 }

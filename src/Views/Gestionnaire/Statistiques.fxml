@@ -6,7 +6,6 @@
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.AreaChart?>
-<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
@@ -204,14 +203,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <BarChart fx:id="sales_chart" layoutX="-32.0" layoutY="-87.0" legendSide="RIGHT" title="Sales " AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </BarChart>
+                  <StackPane fx:id="bar" layoutX="20.0" layoutY="35.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0" />
                   <JFXComboBox fx:id="sales_period" onAction="#setSales" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                      <focusColor>
                         <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">

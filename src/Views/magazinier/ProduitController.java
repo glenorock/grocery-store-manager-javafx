@@ -34,6 +34,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -196,7 +197,7 @@ public class ProduitController {
                     text.setPrefWidth(100);
                     content.getChildren().add(text);
                     ButtonType validate = new ButtonType("OK",ButtonBar.ButtonData.OK_DONE);
-                    ButtonType cancel = new ButtonType("Anuller",ButtonBar.ButtonData.CANCEL_CLOSE);
+                    ButtonType cancel = new ButtonType("Annuler",ButtonBar.ButtonData.CANCEL_CLOSE);
                     dialog.getDialogPane().getButtonTypes().addAll(validate,cancel);
                     dialog.getDialogPane().setContent(content);
                     dialog.setResultConverter(new Callback<ButtonType,Boolean>(){
@@ -232,14 +233,12 @@ public class ProduitController {
             
             displayArea.getChildren().add(grid);
         }
-        ObservableList<Categorie> datac = FXCollections.observableArrayList(Categorie.getCategories());
-        categorie.setItems(datac);
-            
+        
     }
     
     void show_Allproduits() throws IOException{
         data = FXCollections.observableList(Produit.getProduits());
-        data.sort(Produit.sortBySales);
+        data.sort(Produit.sortByIdDesc); 
         show_produits(data);
     }
     
@@ -250,5 +249,8 @@ public class ProduitController {
         assert add != null : "fx:id=\"add\" was not injected: check your FXML file 'Produit.fxml'.";
         assert displayArea != null : "fx:id=\"displayArea\" was not injected: check your FXML file 'Produit.fxml'.";
         show_Allproduits();
+        ObservableList<Categorie> datac = FXCollections.observableArrayList(Categorie.getCategories());
+        categorie.setItems(datac);
+ 
     }
 }

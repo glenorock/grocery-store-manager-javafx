@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane stylesheets="@../../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.caissiere.Facture_LignesController">
    <children>
-      <VBox spacing="25.0">
+      <VBox spacing="25.0" style="-fx-background-color: white;" styleClass="can-search">
          <children>
-            <VBox alignment="CENTER" spacing="15.0">
+            <VBox alignment="CENTER_LEFT" spacing="15.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" spacing="50.0">
+                  <FlowPane alignment="CENTER">
                      <children>
-                        <Label fx:id="date" text="Date" textFill="DARKSLATEGRAY">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="numero" text="Numero facture" textFill="DARKSLATEGRAY">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../503598_16711724_2997645_a743a7b9_image.png" />
+                           </image>
+                        </ImageView>
                      </children>
-                  </HBox>
+                  </FlowPane>
+                  <Label fx:id="date" text="Date" textFill="DARKSLATEGRAY">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numero" text="Numero facture" textFill="DARKSLATEGRAY">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
                   <Label fx:id="client" layoutX="286.0" layoutY="55.0" text="Client" textFill="DARKSLATEGRAY">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -65,16 +71,9 @@
                </children>
             </HBox>
          </children>
-         <styleClass>
-            <String fx:value="box" />
-            <String fx:value="can-search" />
-         </styleClass>
          <padding>
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </padding>
       </VBox>
    </children>
-   <padding>
-      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-   </padding>
 </StackPane>

@@ -8,10 +8,12 @@ package alimentation;
 import static alimentation.EntityClasses.emf;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import javafx.collections.ObservableList;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -227,19 +229,28 @@ public class Facture implements Serializable,EntityClasses,Transaction {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Facture> query;
         query = em.createQuery("select f from Facture f order by f.idFac desc",Facture.class);
-        return query.getSingleResult();
+        return query.getResultList().get(0);    
     }
     
     public double getTotal(){
-        double total = 0;
-        for(Lignefacture l: this.lignefactureCollection){
-            total = total + l.getPrix().doubleValue();
-        }
-        return total;
+         return this.montant.doubleValue() - this.remise.doubleValue();
     }
     
     public double received(){
         return this.montant.doubleValue() - this.remise.doubleValue();
     }
+
+    @Override
+    public double trans() {
+        return this.getTotal();
+    }
+    
+    @Override
+    public Date getDate(){
+        return this.dateFac;
+    }
+    
+    
+    
     
 }

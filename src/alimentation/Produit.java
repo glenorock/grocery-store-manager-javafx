@@ -276,6 +276,14 @@ public class Produit implements Serializable ,EntityClasses{
         return query.getSingleResult();
     }
     
+    public static Produit getProduitByCode(Integer code){
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Produit> query = em.createQuery("Select c from Produit c where c.codePro = :code",Produit.class).setParameter("code",code);
+        return query.getSingleResult();
+    }
+    
+    
+    
     public void changeSellingPrice(Integer prix){
         EntityManager em = emf.createEntityManager();
         Produit prod = em.find(Produit.class,this.codePro);

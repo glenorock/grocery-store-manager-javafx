@@ -120,7 +120,7 @@ public class HistoriqueController {
         filter.getItems().clear();
         filter.setItems(dataf);
         data = FXCollections.observableArrayList(Gestionstock.getTransactions());
-        data.sort(Gestionstock.sortByIddesc);
+        data.sort(Gestionstock.sortByMostRecent);
         table.setItems(data);
         
         

@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import alimentation.EntityClasses;
+import java.io.FileInputStream;
+import javafx.scene.image.Image;
 /**
  *
  * @author jhy
@@ -35,8 +37,12 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(u);
         stage.initStyle(StageStyle.DECORATED);
         stage.setTitle("DOMS");
+        FileInputStream inputstream = new FileInputStream(Constants.Logo_Image); 
+        Image icon = new Image(inputstream); 
+        stage.getIcons().add(icon);
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        
         stage.show();
     }
     

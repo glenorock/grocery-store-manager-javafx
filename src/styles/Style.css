@@ -2,8 +2,9 @@
     -fx-background-color:darkslategrey;
 }
 .top-pane .top{
-     -fx-background-color:wheat;
+    -fx-background-color:linear-gradient(to left,wheat,white,wheat);
 }
+
 .top-pane .menu-button {
     -fx-background-color:transparent;
 }
@@ -66,7 +67,7 @@
 }
 
 .validation-button{
-    -fx-background-color:green;
+    -fx-background-color: #00ff22;
     -fx-text-fill:white;
     -fx-font-weight:bold;
 }
@@ -97,8 +98,14 @@
 }
 .table-view .column-header .label{
    -fx-text-fill: white;
-   -fx-font-weight: bold; 
-   -fx-alignment: CENTER;
+   -fx-font-weight: bold;
+   -fx-alignment:CENTER_LEFT;
+}
+
+.table-view .column-header{
+   -fx-text-fill: white;
+   -fx-font-weight: bold;
+   -fx-alignment:CENTER_LEFT;
 }
 
 .table-row-cell{
@@ -106,7 +113,6 @@
 }
 
 .table-view .cell{
-  -fx-alignment: center;
   -fx-text-fill: black;
   -fx-background-color:white;
 }
