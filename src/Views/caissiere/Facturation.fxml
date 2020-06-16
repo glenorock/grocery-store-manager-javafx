@@ -21,87 +21,129 @@
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
          <children>
-            <HBox alignment="CENTER" spacing="25.0">
+            <HBox alignment="CENTER_LEFT" VBox.vgrow="NEVER">
                <children>
-                  <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="100.0" prefHeight="200.0" prefWidth="200.0" vgap="25.0" HBox.hgrow="ALWAYS">
+                  <FlowPane alignment="CENTER_LEFT" hgap="25.0" vgap="25.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                        <HBox spacing="50.0">
                            <children>
-                              <Label text="Quantite: ">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="qty" onAction="#set" styleClass="apercu-area" />
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <children>
+                                    <Label text="Client: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="client" styleClass="apercu-area" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Label text="Mode de paiement: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXToggleButton fx:id="isCash" nodeOrientation="LEFT_TO_RIGHT" onAction="#mode" text="mode" toggleColor="DARKSLATEGRAY" toggleLineColor="ORANGE" unToggleColor="ORANGE" unToggleLineColor="DARKSLATEGRAY" />
+                                 </children>
+                              </HBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" spacing="15.0">
+                        <HBox spacing="50.0">
                            <children>
-                              <Label text="Code Produit: ">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="codePro" onAction="#set" styleClass="apercu-area" />
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <children>
+                                    <Label text="Code Produit: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="codePro" onAction="#set" styleClass="apercu-area" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                 <children>
+                                    <Label text="Quantite: ">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="qty" onAction="#set" styleClass="apercu-area" />
+                                 </children>
+                              </HBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" spacing="15.0">
+                        <HBox spacing="50.0">
                            <children>
-                              <Label text="Client: ">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="client" styleClass="apercu-area" />
+                              <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                 <children>
+                                    <Label text="Montant Total:">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="net1" text="montant" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                 <children>
+                                    <Label text="Remise">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="net11" text="rem" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                 <children>
+                                    <Label text="Net à payer:">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="net" text="net" />
+                                 </children>
+                              </HBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER">
+                        <HBox spacing="50.0">
                            <children>
-                              <Label text="Mode de paiement: ">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <JFXToggleButton fx:id="isCash" nodeOrientation="LEFT_TO_RIGHT" onAction="#mode" text="mode" toggleColor="DARKSLATEGRAY" toggleLineColor="ORANGE" unToggleColor="ORANGE" unToggleLineColor="DARKSLATEGRAY" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="15.0">
-                           <children>
-                              <Label text="Net à payer:">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="net" text="net" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" spacing="15.0">
-                           <children>
-                              <Label text="Montant Recu:">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="recu" onAction="#set" styleClass="apercu-area" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" spacing="15.0">
-                           <children>
-                              <Label text="Reliquat:">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="remise" layoutX="10.0" layoutY="10.0" text="reliquat" />
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <children>
+                                    <Label text="Montant Recu:">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="recu" onAction="#set" styleClass="apercu-area" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <children>
+                                    <Label text="Reliquat:">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="remise" layoutX="10.0" layoutY="10.0" text="reliquat" />
+                                 </children>
+                              </HBox>
                            </children>
                         </HBox>
                      </children>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
                   </FlowPane>
                   <VBox alignment="CENTER" spacing="15.0" HBox.hgrow="NEVER">
                      <children>
                         <StackPane fx:id="area" prefHeight="150.0" prefWidth="200.0" />
                         <JFXButton fx:id="ajouter" buttonType="RAISED" onAction="#ajouter" prefHeight="50.0" prefWidth="100.0" styleClass="validation-button" text="Ajouter" />
                      </children>
+                     <HBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </HBox.margin>
                   </VBox>
                </children>
             </HBox>

@@ -110,11 +110,14 @@
 
 .table-row-cell{
     -fx-background-color:darkslategrey;
+    -fx-alignment:CENTER_LEFT;
+
 }
 
 .table-view .cell{
   -fx-text-fill: black;
   -fx-background-color:white;
+  -fx-alignment:CENTER_LEFT;
 }
 
 

@@ -41,6 +41,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Gestionstock.findByOperation", query = "SELECT g FROM Gestionstock g WHERE g.operation = :operation")})
 public class Gestionstock implements Serializable ,EntityClasses,Transaction{
 
+    @Column(name = "description")
+    private String description;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -76,8 +79,16 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
         this.qte = qte;
         this.dateStock = dateStock;
         this.operation = operation;
+        this.description = "";
     }
-
+    
+    public Gestionstock(Integer idStock, int qte, Date dateStock, boolean operation,String description) {
+        this.idStock = idStock;
+        this.qte = qte;
+        this.dateStock = dateStock;
+        this.operation = operation;
+        this.description = description;
+    }
     public Integer getIdStock() {
         return idStock;
     }
@@ -197,6 +208,14 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
     @Override
     public Date getDate(){
         return this.dateStock;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     

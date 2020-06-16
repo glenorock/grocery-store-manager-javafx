@@ -24,7 +24,7 @@ public class Constants {
     /**
      *  Absolute path for the logo file
      */
-    public final static String Logo_Image = "C:\\Users\\jhy\\Documents\\NetBeansProjects\\projetBD\\icons8_google_wallet_32.png";
+    public final static String Logo_Image = "C:\\Users\\jhy\\Documents\\NetBeansProjects\\projetBD\\icon.jpg";
     
     public final static String Logo_Image_BW = "C:\\Users\\jhy\\Documents\\NetBeansProjects\\projetBD\\logo.png";
     

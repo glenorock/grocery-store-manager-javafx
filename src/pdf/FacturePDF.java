@@ -9,12 +9,9 @@ import Views.Constants;
 import alimentation.Facture;
 import alimentation.Lignefacture;
 
-import com.itextpdf.text.Anchor;
 import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
@@ -168,7 +165,7 @@ public class FacturePDF {
         total = list.stream().map((data) -> data.getPrix().doubleValue()).reduce(total, (accumulator, _item) -> accumulator + _item);
         net = (1-remise)*total;
         
-        Paragraph p1 = new Paragraph("Total: " + total);
+        Paragraph p1 = new Paragraph("Total: " + total+ " FCFA");
         p1.setAlignment(Paragraph.ALIGN_RIGHT); 
         document.add(p1);
         
@@ -176,7 +173,7 @@ public class FacturePDF {
         p2.setAlignment(Paragraph.ALIGN_RIGHT); 
         document.add(p2);
         
-        Paragraph p3 = new Paragraph("Net à Payer: " + net);
+        Paragraph p3 = new Paragraph("Net à Payer: " + net + " FCFA");
         p3.setAlignment(Paragraph.ALIGN_RIGHT); 
         document.add(p3);
         

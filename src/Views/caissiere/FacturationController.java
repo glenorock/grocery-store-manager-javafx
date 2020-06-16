@@ -2,42 +2,31 @@ package Views.caissiere;
 
 import Views.Constants;
 import Views.LogInController;
-import Views.magazinier.ProduitController;
 import Views.magazinier.Produit_SingleViewController;
-import alimentation.Categorie;
 import alimentation.Client;
 import alimentation.EntityClasses;
 import alimentation.Facture;
-import alimentation.Gestionstock;
 import alimentation.Lignefacture;
 import alimentation.Produit;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Date;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -50,7 +39,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import pdf.FacturePDF;
 
@@ -81,7 +69,16 @@ public class FacturationController {
     private TextField recu;
 
     @FXML
+    private Label reliquat;
+    
+    @FXML
+    private Label totalToPay;
+    
+    @FXML
     private Label remise;
+    
+    
+    
 
     @FXML
     private StackPane area;
@@ -201,7 +198,10 @@ public class FacturationController {
                     pro
             ));
             net.setText(""+ calculateNet());
-            remise.setText(""  + calculRemise()); 
+            reliquat.setText(""  + calculRemise()); 
+            codePro.setText(""); 
+            qty.setText("1");
+            set(event);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -220,7 +220,7 @@ public class FacturationController {
     void set(ActionEvent event) {
         show_produits();
         net.setText(""+ calculateNet());
-        remise.setText(""  + calculRemise()); 
+        reliquat.setText(""  + calculRemise()); 
     }
     
     void show_produits(){
@@ -233,7 +233,8 @@ public class FacturationController {
             Produit_SingleViewController controller = loader.getController();
             controller.product = pro;
             controller.set();
-            controller.vbox.getChildren().removeAll(controller.buttons,controller.qte);
+            controller.qte.setText("Prix Unitaire: " + pro.getPrixVente().toString() + "FCFA");
+            controller.vbox.getChildren().removeAll(controller.buttons);
             area.getChildren().add(grid);
         } catch (Exception ex) {
         }
@@ -265,7 +266,7 @@ public class FacturationController {
         qty.setText(null); 
         codePro.setText(null);
         this.recu.setText(null); 
-        this.remise.setText(null); 
+        this.reliquat.setText(null); 
         isCash.setSelected(true); 
         set(event);
     }
@@ -383,7 +384,7 @@ public class FacturationController {
         assert isCash != null : "fx:id=\"isCash\" was not injected: check your FXML file 'Facturation.fxml'.";
         assert net != null : "fx:id=\"net\" was not injected: check your FXML file 'Facturation.fxml'.";
         assert recu != null : "fx:id=\"recu\" was not injected: check your FXML file 'Facturation.fxml'.";
-        assert remise != null : "fx:id=\"remise\" was not injected: check your FXML file 'Facturation.fxml'.";
+        assert reliquat != null : "fx:id=\"remise\" was not injected: check your FXML file 'Facturation.fxml'.";
         assert area != null : "fx:id=\"area\" was not injected: check your FXML file 'Facturation.fxml'.";
         assert ajouter != null : "fx:id=\"ajouter\" was not injected: check your FXML file 'Facturation.fxml'.";
         assert table != null : "fx:id=\"table\" was not injected: check your FXML file 'Facturation.fxml'.";

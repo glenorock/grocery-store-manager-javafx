@@ -2,7 +2,6 @@ package Views.caissiere;
 
 import alimentation.Client;
 import alimentation.EntityClasses;
-import alimentation.Fournisseur;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
