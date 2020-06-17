@@ -46,8 +46,6 @@ public class EmployesController implements Initializable {
     @FXML
     private TableColumn<Gestionnaire, String> userCol;
 
-    @FXML
-    private TableColumn<Gestionnaire, String> pwdCol;
 
     @FXML
     private TableColumn<Gestionnaire,String> typeCol;
@@ -108,7 +106,6 @@ public class EmployesController implements Initializable {
     private void setColumns(){
         nameCol.setCellValueFactory(new PropertyValueFactory<>("nomGest"));
         userCol.setCellValueFactory(new PropertyValueFactory<>("login"));
-        pwdCol.setCellValueFactory(new PropertyValueFactory<>("pwd"));
         
         Callback<TableColumn<Gestionnaire,String>,TableCell<Gestionnaire,String>> cellType = new Callback(){
             @Override

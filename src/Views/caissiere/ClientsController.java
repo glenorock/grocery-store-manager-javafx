@@ -51,7 +51,10 @@ public class ClientsController {
 
     @FXML
     private TableColumn<Client, String> nom;
-
+    
+    @FXML
+    private TableColumn<Client, Integer> id;
+    
     @FXML
     private TableColumn<Client, String> tel;
 
@@ -105,6 +108,7 @@ public class ClientsController {
     
     void setColumns(){
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        id.setCellValueFactory(new PropertyValueFactory<>("idClient"));
         tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));      
     }

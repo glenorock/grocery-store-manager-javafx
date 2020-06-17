@@ -34,7 +34,7 @@
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="client" styleClass="apercu-area" />
+                                    <ComboBox fx:id="client" editable="true" onAction="#setClient" styleClass="apercu-area" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER">
@@ -82,7 +82,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="net1" text="montant" />
+                                    <Label fx:id="totalToPay" text="montant" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" spacing="15.0">
@@ -92,7 +92,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="net11" text="rem" />
+                                    <Label fx:id="remise" text="rem" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" spacing="15.0">
@@ -126,7 +126,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="remise" layoutX="10.0" layoutY="10.0" text="reliquat" />
+                                    <Label fx:id="reliquat" layoutX="10.0" layoutY="10.0" text="reliquat" />
                                  </children>
                               </HBox>
                            </children>

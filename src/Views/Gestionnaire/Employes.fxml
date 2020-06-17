@@ -31,7 +31,6 @@
               <columns>
                 <TableColumn fx:id="nameCol" prefWidth="75.0" text="Nom" />
                 <TableColumn fx:id="userCol" prefWidth="75.0" text="Nom Utilisateur" />
-                  <TableColumn fx:id="pwdCol" prefWidth="75.0" text="Mot de Passe" />
                   <TableColumn fx:id="typeCol" prefWidth="75.0" text="Type Compte" />
                   <TableColumn fx:id="activeCol" prefWidth="75.0" text="Actif" />
                   <TableColumn fx:id="actionCol" prefWidth="75.0" sortable="false" text="Activation/Desactivation" />

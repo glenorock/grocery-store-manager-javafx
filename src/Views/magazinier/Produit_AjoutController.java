@@ -22,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -58,7 +59,10 @@ public class Produit_AjoutController {
 
     @FXML
     public JFXButton add;
-
+    
+    @FXML
+    private CheckBox isNotWholeOnly;
+    
     @FXML
     private JFXButton cancel;
     
@@ -67,6 +71,7 @@ public class Produit_AjoutController {
     public void add() {
         try{
             EntityClasses.add(new Produit(
+                !isNotWholeOnly.isSelected(),
                 name.getText(),
                 Integer.parseInt(sell.getText()),
                 Integer.parseInt(cost.getText()),

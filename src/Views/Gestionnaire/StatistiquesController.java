@@ -161,22 +161,21 @@ public class StatistiquesController {
         
         //This year
         temp = factures.filtered(item ->
-                item.getDateFac().getYear() == (new Date()).getYear()
+                getYear(item.getDateFac()) == getYear(new Date())
         );
         sales_year.setText((this.totalRecieved(temp)).toString() + " FCFA"); 
         
         //This Month
         temp = factures.filtered(item ->
-                item.getDateFac().getYear() == (new Date()).getYear() &&
-                item.getDateFac().getMonth() == (new Date()).getMonth()
+                getYear(item.getDateFac()) == getYear(new Date()) &&
+                this.getMonthOfTheYear(item.getDate()) == this.getMonthOfTheYear(new Date()) 
         );
         sales_month.setText((this.totalRecieved(temp)).toString() + " FCFA"); 
         
         //Today
         temp = factures.filtered(item ->
-                item.getDateFac().getYear() == (new Date()).getYear()&&
-                item.getDateFac().getMonth() == (new Date()).getMonth()&&
-                item.getDateFac().getDay() == (new Date()).getDay()
+                getYear(item.getDateFac()) == getYear(new Date())&&
+                this.getDayOfTheYear(item.getDate()) == this.getDayOfTheYear(new Date()) 
         );
         sales_today.setText((this.totalRecieved(temp)).toString() + " FCFA"); 
         
@@ -255,11 +254,13 @@ public class StatistiquesController {
             case "Week":
                 tempGain = factures.filtered(item ->
                     item.getDateFac().getYear() == (new Date()).getYear()&&
-                    item.getDateFac().getMonth() == (new Date()).getMonth()
+                    item.getDateFac().getMonth() == (new Date()).getMonth() &&
+                    this.getWeekofTheYear(item.getDate()) == this.getWeekofTheYear(new Date())
                 );
                 tempSpend = stocks.filtered(item->
                     item.getDateStock().getYear() == (new Date()).getYear()&&
-                    item.getDateStock().getMonth() == (new Date()).getMonth()        
+                    item.getDateStock().getMonth() == (new Date()).getMonth() &&
+                    this.getWeekofTheYear(item.getDate()) == this.getWeekofTheYear(new Date())
                 );
                 setWeek(tempGain,tempSpend);
                 break;
@@ -497,12 +498,31 @@ public class StatistiquesController {
         return cal.get(Calendar.DAY_OF_MONTH); 
     }
     
+    private int getDayOfTheYear(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.DAY_OF_YEAR); 
+    }
+    
+    private int getYear(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.YEAR); 
+    }
+    
+    
+    
     private int getMonthOfTheYear(Date date){
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return cal.get(Calendar.MONTH); 
     }
     
+    private int getWeekofTheYear(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.WEEK_OF_YEAR);
+    }
     
     private double getSpendOnDayOfMonth(ObservableList<Gestionstock> list,int day){
         ObservableList<Gestionstock> temp = list.filtered(item -> getDayOfTheMonth(item.getDateStock()) == day);

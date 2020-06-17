@@ -52,8 +52,11 @@ public class FournisseurController {
 
     
     @FXML
+    private TableColumn<Fournisseur, Integer> id;
+    
+    @FXML
     private TableColumn<Fournisseur, String> nom;
-
+    
     @FXML
     private TableColumn<Fournisseur, String> adresse;
     
@@ -98,6 +101,7 @@ public class FournisseurController {
     }
     
     void setColumns(){
+        id.setCellValueFactory(new PropertyValueFactory<>("codeFour"));
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));      
     }

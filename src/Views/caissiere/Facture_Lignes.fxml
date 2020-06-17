@@ -4,9 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,15 +15,6 @@
          <children>
             <VBox alignment="CENTER_LEFT" spacing="15.0">
                <children>
-                  <FlowPane alignment="CENTER">
-                     <children>
-                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../503598_16711724_2997645_a743a7b9_image.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </FlowPane>
                   <Label fx:id="date" text="Date" textFill="DARKSLATEGRAY">
                      <font>
                         <Font name="System Bold" size="20.0" />

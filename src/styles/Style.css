@@ -177,6 +177,7 @@
     -fx-background-radius: 50px;
     -fx-border-radius: 50px;
     -fx-border-color: linear-gradient(to bottom,green,blue,orange,red);
+    -fx-text-fill: darkslategray;
 }
 
 .scroll-pane {
@@ -255,3 +256,17 @@
     -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.5),25,0.1,0,0);
 }
 
+.combo-box .arrow {
+    -fx-background-color: black;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-size: 5;
+    -fx-border-color: transparent;
+}
+
+.combo-box .text-field {
+    -fx-text-fill:darkslategray;
+    -fx-background-color:transparent;
+}

@@ -18,6 +18,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,6 +42,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 import pdf.FacturePDF;
 
 public class FacturationController {
@@ -77,9 +80,6 @@ public class FacturationController {
     @FXML
     private Label remise;
     
-    
-    
-
     @FXML
     private StackPane area;
 
@@ -116,8 +116,12 @@ public class FacturationController {
     private JFXButton supprimer;
     
     private ObservableList<Lignefacture> data = FXCollections.observableArrayList();
+    private ObservableList<Client> clients = FXCollections.observableArrayList();
     
-    
+    @FXML
+    void setClient(ActionEvent event) {
+         System.out.println(client.getSelectionModel().getSelectedItem());
+    }
     void setColumns(){
         Callback<TableColumn<Lignefacture,Void>,TableCell<Lignefacture,Void>> imageCell = new Callback() {
             @Override
@@ -182,9 +186,9 @@ public class FacturationController {
     }
     
     void setData(){
-        ObservableList<Client> datac = FXCollections.observableArrayList(Client.getClients());
-        client.setItems(datac);
-        client.setValue(datac.get(0)); 
+        clients = FXCollections.observableArrayList(Client.getClients());
+        client.setItems(clients);
+        client.setValue(clients.get(0)); 
         table.setItems(data);
     }
     
@@ -197,8 +201,8 @@ public class FacturationController {
                     Short.valueOf(qty.getText()),
                     pro
             ));
-            net.setText(""+ calculateNet());
-            reliquat.setText(""  + calculRemise()); 
+            net.setText(""+ calculNet());
+            reliquat.setText(""  + calculReliquat()); 
             codePro.setText(""); 
             qty.setText("1");
             set(event);
@@ -219,8 +223,10 @@ public class FacturationController {
    @FXML
     void set(ActionEvent event) {
         show_produits();
-        net.setText(""+ calculateNet());
-        reliquat.setText(""  + calculRemise()); 
+        net.setText(""+ calculNet());
+        this.reliquat.setText(""  + calculReliquat()); 
+        this.totalToPay.setText("" +calculTotal() + " FCFA" );
+        this.remise.setText(calculRemise() * 100 + "%");
     }
     
     void show_produits(){
@@ -240,7 +246,29 @@ public class FacturationController {
         }
     }
     
-    public double calculateNet(){
+    public double calculRemise(){
+        Client c = client.getValue();
+        if(c.getNom().equalsIgnoreCase(client.getItems().get(0).getNom())) return 0.0;
+        if(calculTotal() <= 15000) return 0.0;
+        return 0.03;
+    }
+    
+    public double calculNet(){
+        return (1-calculRemise()) * calculTotal();
+    }
+    
+    public double calculReliquat(){
+        try{
+            double given = Double.valueOf(recu.getText());
+            if(recu.getText() == null || "".equals(recu.getText())) given = 0.0;
+            return given - calculNet();
+        }catch(Exception e){
+            return 0.0;
+        }
+        
+    }
+    
+    public double calculTotal(){
         double amount = 0.0;
         for(Lignefacture ligne: data){
             amount += ligne.getPrix().doubleValue();
@@ -248,22 +276,11 @@ public class FacturationController {
         return amount;
     }
     
-    public double calculRemise(){
-        try{
-            double given = Double.valueOf(recu.getText());
-            if(recu.getText() == null || "".equals(recu.getText())) given = 0.0;
-            return given - calculateNet();
-        }catch(Exception e){
-            return 0.0;
-        }
-        
-    }
-    
     @FXML
     void anuller(ActionEvent event) {
         data.clear();
         client.setValue(client.getItems().get(0));  
-        qty.setText(null); 
+        qty.setText("1"); 
         codePro.setText(null);
         this.recu.setText(null); 
         this.reliquat.setText(null); 
@@ -276,7 +293,7 @@ public class FacturationController {
         try {
             double tmp = Double.parseDouble(net.getText());
             BigDecimal montant = BigDecimal.valueOf(tmp);
-            BigDecimal remisse = BigDecimal.valueOf(calculRemise());
+            BigDecimal remisse = BigDecimal.valueOf(calculReliquat());
             
             Facture fact = new Facture(montant,remisse,isCash.isSelected(),client.getValue(),LogInController.user);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Facture_Lignes.fxml"));
@@ -310,7 +327,7 @@ public class FacturationController {
     @FXML
     void valider(ActionEvent event) {
         try{
-            double tmp = Double.parseDouble(net.getText());
+            double tmp = calculNet();
             BigDecimal montant = BigDecimal.valueOf(tmp);
             BigDecimal remisse = BigDecimal.valueOf(calculRemise());
             if((remisse.doubleValue() < 0) || data.isEmpty() || !isAvailable()) return;
@@ -374,6 +391,24 @@ public class FacturationController {
         setData();
         isCash.setSelected(true);
         isCash.setText("Cash");
+        this.remise.setText( "0.0 %");
+        qty.setText("1");
+        client.setConverter(new StringConverter<Client>() {
+            @Override
+            public String toString(Client object) {
+                return object.toString();
+            }
+ 
+            @Override
+            public Client fromString(String string) {
+                Client c = client.getItems().filtered(item ->
+                        item.getId().toString().equals(string) ||
+                        item.getNom().toLowerCase().contains(string.toLowerCase())
+                ).get(0);
+                if(c == null) return clients.get(0);
+                return c;
+            }
+        });
     }
 
     @FXML

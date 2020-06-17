@@ -48,6 +48,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Produit.findByActif", query = "SELECT p FROM Produit p WHERE p.actif = :actif")})
 public class Produit implements Serializable ,EntityClasses{
 
+    @Column(name = "wholeOnly")
+    private Boolean wholeOnly;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -354,6 +357,28 @@ public class Produit implements Serializable ,EntityClasses{
             return Double.valueOf(o2.profitMade() - o1.profitMade()).intValue();
         }
     };
+
+    public Boolean getWholeOnly() {
+        return wholeOnly;
+    }
+
+    public void setWholeOnly(Boolean wholeOnly) {
+        this.wholeOnly = wholeOnly;
+    }
+
+    public Produit(Boolean wholeOnly,String nomPro, Integer prixVente, int prixAchat, String description, Fournisseur codeFour, Categorie idCategorie) {
+        this.wholeOnly = wholeOnly;
+        this.codePro = null;
+        this.nomPro = nomPro;
+        this.prixVente = prixVente;
+        this.prixAchat = prixAchat;
+        this.qte = 0;
+        this.description = description;
+        this.codeFour = codeFour;
+        this.dateInsertion = new Date();
+        this.actif = true;
+        this.idCategorie = idCategorie;
+    }
     
     
     
