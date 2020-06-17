@@ -65,8 +65,11 @@ public class Produit_SingleViewController {
             image.setImage(pro_image);
             
         }
-        
-        qte.setText(""+product.getQte());
+        if(product.getWholeOnly()){
+            qte.setText("" + product.getQte().intValue()); 
+        }else{
+            qte.setText(""+product.getQte().doubleValue());
+        }
         
     }
     

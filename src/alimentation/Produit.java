@@ -292,7 +292,7 @@ public class Produit implements Serializable ,EntityClasses{
         em.close();
     }
     
-    public void increase(int qte){
+    public void increase(double qte){
         EntityManager em = emf.createEntityManager();
         Produit prod = em.find(Produit.class,this.codePro);
         em.getTransaction().begin();
@@ -305,7 +305,7 @@ public class Produit implements Serializable ,EntityClasses{
     public int numberOfSales(){
         int number = 0;
         for(Lignefacture ligne: this.lignefactureCollection){
-            number = ligne.getQte() + number;
+            number = ligne.getQte().intValue() + number;
         }
         return number;
     }

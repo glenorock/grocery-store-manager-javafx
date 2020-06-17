@@ -34,7 +34,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -157,12 +156,13 @@ public class ProduitController {
                         public Boolean call(ButtonType b) {
                             if(b.getButtonData() == ButtonBar.ButtonData.OK_DONE){
                                 try{
-                                    int qte = Integer.parseInt(text.getText());
+                                    double qte = Double.parseDouble(text.getText());
                                     controller.product.increase(qte);
                                     Gestionstock stock = new Gestionstock(qte,true,controller.product,LogInController.user);
                                     EntityClasses.add(stock);
                                     return true;
                                 }catch(Exception e){
+                                    
                                     return false;
                                 }
                             }
@@ -205,7 +205,7 @@ public class ProduitController {
                         public Boolean call(ButtonType b) {
                             if(b.getButtonData() == ButtonBar.ButtonData.OK_DONE){
                                 try{
-                                    int qte = Integer.parseInt(text.getText());
+                                    double qte = Double.valueOf(text.getText());
                                     controller.product.reduce(qte);
                                     Gestionstock stock = new Gestionstock(qte,false,controller.product,LogInController.user);
                                     EntityClasses.add(stock);

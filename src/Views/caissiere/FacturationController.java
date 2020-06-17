@@ -11,6 +11,7 @@ import alimentation.Produit;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -18,8 +19,6 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -148,7 +147,7 @@ public class FacturationController {
                                 Image pro_image = new Image(inputstream); 
                                 img.setImage(pro_image);
                                 setGraphic(img);
-                            }catch(Exception e){
+                            }catch(FileNotFoundException e){
                                 
                             }
                         }
@@ -197,10 +196,25 @@ public class FacturationController {
         try{
             Produit pro = Produit.getProduitByCode(Integer.valueOf(codePro.getText())); 
             if (pro == null) return;
-            data.add(new Lignefacture(
-                    Short.valueOf(qty.getText()),
+            if(pro.getWholeOnly()){
+                try{
+                    data.add(new Lignefacture(
+                    Double.valueOf(Integer.valueOf(qty.getText())), 
                     pro
             ));
+                }catch(NumberFormatException e){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText("Product can be sold in whole only");
+                    alert.setHeaderText(null);
+                    alert.showAndWait();
+                    return;
+                }
+            }else{
+                data.add(new Lignefacture(
+                    Double.valueOf(qty.getText()),
+                    pro
+                ));
+            }
             net.setText(""+ calculNet());
             reliquat.setText(""  + calculReliquat()); 
             codePro.setText(""); 
@@ -254,7 +268,7 @@ public class FacturationController {
     }
     
     public double calculNet(){
-        return (1-calculRemise()) * calculTotal();
+        return Double.valueOf((1-calculRemise()) * calculTotal()).intValue(); 
     }
     
     public double calculReliquat(){
@@ -336,9 +350,9 @@ public class FacturationController {
             Facture fact = Facture.getMostRecent();
             for(Lignefacture ligne: data){
                 EntityClasses.add(
-                        new Lignefacture(ligne.getQte(),ligne.getCodePro(),fact)
+                        new Lignefacture(ligne.getQte().doubleValue(),ligne.getCodePro(),fact)
                 );
-                ligne.getCodePro().reduce(ligne.getQte()); 
+                ligne.getCodePro().reduce(ligne.getQte().doubleValue()); 
             }
             makeFacture(fact);
             FacturePDF pdf = new FacturePDF(fact,data);
@@ -374,7 +388,7 @@ public class FacturationController {
     
     public boolean isAvailable(){
         for(Lignefacture fac:data){
-            if(fac.getCodePro().getQte().doubleValue() < fac.getQte()){
+            if(fac.getCodePro().getQte().doubleValue() < fac.getQte().doubleValue()){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("Insufficient products in stock for: " + fac.getCodePro()
                         + "\nAmount available in stock: " + fac.getCodePro().getQte());

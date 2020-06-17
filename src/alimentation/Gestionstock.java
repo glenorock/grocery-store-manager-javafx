@@ -6,6 +6,7 @@
 package alimentation;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -41,6 +42,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Gestionstock.findByOperation", query = "SELECT g FROM Gestionstock g WHERE g.operation = :operation")})
 public class Gestionstock implements Serializable ,EntityClasses,Transaction{
 
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "qte")
+    private BigDecimal qte;
+
     @Column(name = "description")
     private String description;
 
@@ -50,9 +55,6 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
     @Basic(optional = false)
     @Column(name = "idStock")
     private Integer idStock;
-    @Basic(optional = false)
-    @Column(name = "qte")
-    private int qte;
     @Basic(optional = false)
     @Column(name = "dateStock")
     @Temporal(TemporalType.TIMESTAMP)
@@ -74,17 +76,17 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
         this.idStock = idStock;
     }
 
-    public Gestionstock(Integer idStock, int qte, Date dateStock, boolean operation) {
+    public Gestionstock(Integer idStock, double qte, Date dateStock, boolean operation) {
         this.idStock = idStock;
-        this.qte = qte;
+        this.qte = BigDecimal.valueOf(qte);
         this.dateStock = dateStock;
         this.operation = operation;
         this.description = "";
     }
     
-    public Gestionstock(Integer idStock, int qte, Date dateStock, boolean operation,String description) {
+    public Gestionstock(Integer idStock, double qte, Date dateStock, boolean operation,String description) {
         this.idStock = idStock;
-        this.qte = qte;
+        this.qte = BigDecimal.valueOf(qte);
         this.dateStock = dateStock;
         this.operation = operation;
         this.description = description;
@@ -97,13 +99,6 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
         this.idStock = idStock;
     }
 
-    public int getQte() {
-        return qte;
-    }
-
-    public void setQte(int qte) {
-        this.qte = qte;
-    }
 
     public Date getDateStock() {
         return dateStock;
@@ -160,9 +155,9 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
         return this.idStock;
     }
 
-    public Gestionstock(int qte, boolean operation, Produit codePro, Gestionnaire idGest) {
+    public Gestionstock(double qte, boolean operation, Produit codePro, Gestionnaire idGest) {
         this.idStock = null;
-        this.qte = qte;
+        this.qte = BigDecimal.valueOf(qte);
         this.dateStock = new Date();
         this.operation = operation;
         this.codePro = codePro;
@@ -183,14 +178,14 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
     
     public void transaction(){
         if(this.isIncrease()){
-            this.codePro.increase(this.qte);
+            this.codePro.increase(this.qte.doubleValue());
         }else{
-            this.codePro.reduce(this.qte);
+            this.codePro.reduce(this.qte.doubleValue());
         }
     }
     
     public boolean canReduce(){
-        return this.codePro.getQte().doubleValue() >= this.qte;
+        return this.codePro.getQte().doubleValue() >= this.qte.doubleValue();
     }
     
     public static Comparator<Gestionstock> sortByIddesc = new Comparator<Gestionstock>() {
@@ -202,7 +197,7 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
     
     @Override
     public double trans() {
-        return -1*this.getQte() * this.codePro.getPrixAchat();
+        return -1*this.getQte().doubleValue() * this.codePro.getPrixAchat();
     }
     
     @Override
@@ -216,6 +211,14 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public BigDecimal getQte() {
+        return qte;
+    }
+
+    public void setQte(BigDecimal qte) {
+        this.qte = qte;
     }
     
     

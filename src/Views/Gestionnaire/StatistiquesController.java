@@ -460,7 +460,7 @@ public class StatistiquesController {
         ObservableList<Gestionstock> temp = list.filtered(item -> item.getDateStock().getDay() == day);
         double amount = 0;
         for(Gestionstock stock: temp){
-            amount += (stock.getQte() * stock.getCodePro().getPrixAchat());
+            amount += (stock.getQte().doubleValue() * stock.getCodePro().getPrixAchat());
         }
         return amount;
     }
@@ -469,7 +469,7 @@ public class StatistiquesController {
         ObservableList<Gestionstock> temp = list.filtered(item -> item.getDateStock().getMonth() == month);
         double amount = 0;
         for(Gestionstock stock: temp){
-            amount += (stock.getQte() * stock.getCodePro().getPrixAchat());
+            amount += (stock.getQte().doubleValue() * stock.getCodePro().getPrixAchat());
         }
         return amount;
     }
@@ -528,7 +528,7 @@ public class StatistiquesController {
         ObservableList<Gestionstock> temp = list.filtered(item -> getDayOfTheMonth(item.getDateStock()) == day);
         double amount = 0;
         for(Gestionstock stock: temp){
-            amount += (stock.getQte() * stock.getCodePro().getPrixAchat());
+            amount += (stock.getQte().doubleValue() * stock.getCodePro().getPrixAchat());
         }
         return amount;
     }

@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Lignefacture.findByQte", query = "SELECT l FROM Lignefacture l WHERE l.qte = :qte")})
 public class Lignefacture implements Serializable ,EntityClasses{
 
+    @Column(name = "qte")
+    private BigDecimal qte;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,9 +47,6 @@ public class Lignefacture implements Serializable ,EntityClasses{
     @Basic(optional = false)
     @Column(name = "prix")
     private BigDecimal prix;
-    @Basic(optional = false)
-    @Column(name = "qte")
-    private short qte;
     @JoinColumn(name = "codePro", referencedColumnName = "codePro")
     @ManyToOne(optional = false)
     private Produit codePro;
@@ -61,10 +61,10 @@ public class Lignefacture implements Serializable ,EntityClasses{
         this.idLFac = idLFac;
     }
 
-    public Lignefacture(Integer idLFac, BigDecimal prix, short qte) {
+    public Lignefacture(Integer idLFac, BigDecimal prix, double qte) {
         this.idLFac = idLFac;
         this.prix = prix;
-        this.qte = qte;
+        this.qte = BigDecimal.valueOf(qte); 
     }
 
     public Integer getIdLFac() {
@@ -83,13 +83,6 @@ public class Lignefacture implements Serializable ,EntityClasses{
         this.prix = prix;
     }
 
-    public short getQte() {
-        return qte;
-    }
-
-    public void setQte(short qte) {
-        this.qte = qte;
-    }
 
     public Produit getCodePro() {
         return codePro;
@@ -137,20 +130,28 @@ public class Lignefacture implements Serializable ,EntityClasses{
         return this.idLFac;
     }
 
-    public Lignefacture(short qte, Produit codePro, Facture idFac) {
+    public Lignefacture(double qte, Produit codePro, Facture idFac) {
         this.idLFac = null;
         this.prix = new BigDecimal(qte * codePro.getPrixVente());
-        this.qte = qte;
+        this.qte = BigDecimal.valueOf(qte);
         this.codePro = codePro;
         this.idFac = idFac;
     }
     
-    public Lignefacture(short qte, Produit codePro) {
+    public Lignefacture(double qte, Produit codePro) {
         this.idLFac = null;
         this.prix = new BigDecimal(qte * codePro.getPrixVente());
-        this.qte = qte;
+        this.qte = BigDecimal.valueOf(qte);
         this.codePro = codePro;
         this.idFac = null;
+    }
+
+    public BigDecimal getQte() {
+        return qte;
+    }
+
+    public void setQte(BigDecimal qte) {
+        this.qte = qte;
     }
     
 }

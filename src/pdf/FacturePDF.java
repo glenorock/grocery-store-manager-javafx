@@ -165,7 +165,7 @@ public class FacturePDF {
         total = list.stream().map((data) -> data.getPrix().doubleValue()).reduce(total, (accumulator, _item) -> accumulator + _item);
         net = (1-remise)*total;
         
-        Paragraph p1 = new Paragraph("Total: " + total+ " FCFA");
+        Paragraph p1 = new Paragraph("Total: " + Double.valueOf(total).intValue()+ " FCFA");
         p1.setAlignment(Paragraph.ALIGN_RIGHT); 
         document.add(p1);
         
@@ -173,7 +173,7 @@ public class FacturePDF {
         p2.setAlignment(Paragraph.ALIGN_RIGHT); 
         document.add(p2);
         
-        Paragraph p3 = new Paragraph("Net à Payer: " + net + " FCFA");
+        Paragraph p3 = new Paragraph("Net à Payer: " + Double.valueOf(net).intValue() + " FCFA");
         p3.setAlignment(Paragraph.ALIGN_RIGHT); 
         document.add(p3);
         
