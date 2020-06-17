@@ -374,7 +374,7 @@ public class FacturationController {
     
     public boolean isAvailable(){
         for(Lignefacture fac:data){
-            if(fac.getCodePro().getQte() < fac.getQte()){
+            if(fac.getCodePro().getQte().doubleValue() < fac.getQte()){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("Insufficient products in stock for: " + fac.getCodePro()
                         + "\nAmount available in stock: " + fac.getCodePro().getQte());

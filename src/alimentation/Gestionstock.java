@@ -190,7 +190,7 @@ public class Gestionstock implements Serializable ,EntityClasses,Transaction{
     }
     
     public boolean canReduce(){
-        return this.codePro.getQte() >= this.qte;
+        return this.codePro.getQte().doubleValue() >= this.qte;
     }
     
     public static Comparator<Gestionstock> sortByIddesc = new Comparator<Gestionstock>() {

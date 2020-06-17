@@ -6,6 +6,7 @@
 package alimentation;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Date;
@@ -48,6 +49,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Produit.findByActif", query = "SELECT p FROM Produit p WHERE p.actif = :actif")})
 public class Produit implements Serializable ,EntityClasses{
 
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "qte")
+    private BigDecimal qte;
+
     @Column(name = "wholeOnly")
     private Boolean wholeOnly;
 
@@ -64,9 +69,6 @@ public class Produit implements Serializable ,EntityClasses{
     @Basic(optional = false)
     @Column(name = "prixAchat")
     private int prixAchat;
-    @Basic(optional = false)
-    @Column(name = "qte")
-    private int qte;
     @Basic(optional = false)
     @Column(name = "description")
     private String description;
@@ -92,16 +94,6 @@ public class Produit implements Serializable ,EntityClasses{
 
     public Produit(Integer codePro) {
         this.codePro = codePro;
-    }
-
-    public Produit(Integer codePro, String nomPro, int prixAchat, int qte, String description, Fournisseur codeFour, boolean actif) {
-        this.codePro = codePro;
-        this.nomPro = nomPro;
-        this.prixAchat = prixAchat;
-        this.qte = qte;
-        this.description = description;
-        this.codeFour = codeFour;
-        this.actif = actif;
     }
 
     public Integer getCodePro() {
@@ -136,13 +128,6 @@ public class Produit implements Serializable ,EntityClasses{
         this.prixAchat = prixAchat;
     }
 
-    public int getQte() {
-        return qte;
-    }
-
-    public void setQte(int qte) {
-        this.qte = qte;
-    }
 
     public String getDescription() {
         return description;
@@ -226,7 +211,7 @@ public class Produit implements Serializable ,EntityClasses{
         this.nomPro = nomPro;
         this.prixVente = prixVente;
         this.prixAchat = prixAchat;
-        this.qte = 0;
+        this.qte = new BigDecimal(0);
         this.description = description;
         this.codeFour = codeFour;
         this.actif = true;
@@ -296,13 +281,13 @@ public class Produit implements Serializable ,EntityClasses{
         em.close();
     }
     
-    public void reduce(int qte){
+    public void reduce(double qte){
         EntityManager em = emf.createEntityManager();
         Produit prod = em.find(Produit.class,this.codePro);
         em.getTransaction().begin();
-        int newqty = prod.getQte() - qte;
+        double newqty = prod.getQte().doubleValue() - qte;
         if(newqty < 0) newqty = 0;
-        prod.setQte(newqty);
+        prod.setQte(new BigDecimal(newqty));
         em.getTransaction().commit();
         em.close();
     }
@@ -311,8 +296,8 @@ public class Produit implements Serializable ,EntityClasses{
         EntityManager em = emf.createEntityManager();
         Produit prod = em.find(Produit.class,this.codePro);
         em.getTransaction().begin();
-        int newqty = prod.getQte() + qte;
-        prod.setQte(newqty);
+        double newqty = prod.getQte().doubleValue() + qte;
+        prod.setQte(new BigDecimal(newqty));
         em.getTransaction().commit();
         em.close();
     }
@@ -372,12 +357,20 @@ public class Produit implements Serializable ,EntityClasses{
         this.nomPro = nomPro;
         this.prixVente = prixVente;
         this.prixAchat = prixAchat;
-        this.qte = 0;
+        this.qte = new BigDecimal(0);
         this.description = description;
         this.codeFour = codeFour;
         this.dateInsertion = new Date();
         this.actif = true;
         this.idCategorie = idCategorie;
+    }
+
+    public BigDecimal getQte() {
+        return qte;
+    }
+
+    public void setQte(BigDecimal qte) {
+        this.qte = qte;
     }
     
     
