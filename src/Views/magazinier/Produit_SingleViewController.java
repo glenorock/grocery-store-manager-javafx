@@ -59,7 +59,7 @@ public class Produit_SingleViewController {
             FileInputStream inputstream = new FileInputStream(imagePath + product.getCodePro().toString() + ".jpg"); 
             Image pro_image = new Image(inputstream); 
             image.setImage(pro_image);
-        }catch(Exception e){
+        }catch(FileNotFoundException e){
             FileInputStream inputstream = new FileInputStream(imagePath +"default.jpeg"); 
             Image pro_image = new Image(inputstream); 
             image.setImage(pro_image);

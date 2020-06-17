@@ -163,21 +163,21 @@ public class StatistiquesController {
         temp = factures.filtered(item ->
                 getYear(item.getDateFac()) == getYear(new Date())
         );
-        sales_year.setText((this.totalRecieved(temp)).toString() + " FCFA"); 
+        sales_year.setText((this.totalRecieved(temp)).intValue() + " FCFA"); 
         
         //This Month
         temp = factures.filtered(item ->
                 getYear(item.getDateFac()) == getYear(new Date()) &&
                 this.getMonthOfTheYear(item.getDate()) == this.getMonthOfTheYear(new Date()) 
         );
-        sales_month.setText((this.totalRecieved(temp)).toString() + " FCFA"); 
+        sales_month.setText((this.totalRecieved(temp)).intValue() + " FCFA"); 
         
         //Today
         temp = factures.filtered(item ->
                 getYear(item.getDateFac()) == getYear(new Date())&&
                 this.getDayOfTheYear(item.getDate()) == this.getDayOfTheYear(new Date()) 
         );
-        sales_today.setText((this.totalRecieved(temp)).toString() + " FCFA"); 
+        sales_today.setText((this.totalRecieved(temp)).intValue() + " FCFA"); 
         
         
         
