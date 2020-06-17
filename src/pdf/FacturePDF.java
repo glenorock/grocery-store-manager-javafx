@@ -131,8 +131,8 @@ public class FacturePDF {
 
     private void addShopInformation() throws DocumentException{
         document.add(new Paragraph("-Yaoundé Melen" ,this.subFont));
-        document.add(new Paragraph("-ENSPY" ,this.subFont));
-        document.add(new Paragraph("-3GI" ,this.subFont));
+        document.add(new Paragraph("-Numero fiscal: 17458963-c" ,this.subFont));
+        document.add(new Paragraph("-Contribuable: 128.456" ,this.subFont));
     }
     
     private void addBillInformation() throws DocumentException{

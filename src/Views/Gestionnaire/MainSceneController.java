@@ -49,7 +49,7 @@ public class MainSceneController implements Initializable {
     private JFXButton bilan;
     
     @FXML
-    private JFXButton historiques;
+    private MenuItem  historiques;
     
     @FXML
     private Button employes;
@@ -66,7 +66,7 @@ public class MainSceneController implements Initializable {
     @FXML
     private JFXButton clients;
     @FXML
-    private JFXButton stocks;
+    private MenuItem  stocks;
     
     @FXML
     private Label task;

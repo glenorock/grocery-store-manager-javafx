@@ -28,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -250,6 +251,7 @@ public class FacturationController {
             if (pro == null) return;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("..//magazinier//Produit_SingleView.fxml"));
             VBox grid = loader.load();
+            grid.setPrefSize(Control.USE_COMPUTED_SIZE,Control.USE_COMPUTED_SIZE);
             Produit_SingleViewController controller = loader.getController();
             controller.product = pro;
             controller.set();

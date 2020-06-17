@@ -32,6 +32,7 @@ import alimentation.Gestionstock;
 import java.io.FileNotFoundException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
@@ -60,7 +61,9 @@ public class ProduitController {
     @FXML
     private JFXButton search_but;
 
-    
+     @FXML
+    private Pagination pagination;
+
 
     ObservableList<Produit> data;
     
