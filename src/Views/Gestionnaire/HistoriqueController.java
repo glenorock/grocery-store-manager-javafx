@@ -95,7 +95,7 @@ public class HistoriqueController {
         filter(event);
         ObservableList<Gestionstock> dat = table.getItems();
         if(key == null || "".equalsIgnoreCase(key)) return;
-        table.setItems(dat.filtered(item -> item.getCodePro().getCodePro().toString().toLowerCase().contains(key.toLowerCase()) ||
+        table.setItems(dat.filtered(item -> item.getCodePro().getCode().toLowerCase().contains(key.toLowerCase()) ||
                         item.getCodePro().getNomPro().toLowerCase().contains(key.toLowerCase()) ||
                         item.getIdGest().getNomGest().toLowerCase().contains(key.toLowerCase()) 
                     )); 
@@ -143,7 +143,7 @@ public class HistoriqueController {
                             setText(null);
                         }else{
                             Gestionstock gest = getTableView().getItems().get(getIndex());
-                            setText(gest.getCodePro().getId().toString());
+                            setText(gest.getCodePro().getCode());
                         }
                     }
                     

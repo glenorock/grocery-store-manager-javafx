@@ -44,7 +44,7 @@ public class StockController {
     private TableColumn<Produit, Void> image;
 
     @FXML
-    private TableColumn<Produit, Integer> code;
+    private TableColumn<Produit, String> code;
 
     @FXML
     private TableColumn<Produit, String> nom;
@@ -79,7 +79,7 @@ public class StockController {
         setData();
         if(key == null || "".equals(key))return;
         table.setItems(data.filtered(item ->
-                item.getCodePro().toString().toLowerCase().contains(key.toLowerCase()) ||
+                item.getCode().toLowerCase().contains(key.toLowerCase()) ||
                 item.getNomPro().toLowerCase().contains(key.toLowerCase()) ||
                 item.getIdCategorie().toString().toLowerCase().contains(key.toLowerCase()) ||
                 item.getDateInsertion().toString().toLowerCase().contains(key.toLowerCase()) ||
@@ -90,7 +90,6 @@ public class StockController {
     }
     
     void setColumns(){
-        code.setCellValueFactory(new PropertyValueFactory("codePro"));
         nom.setCellValueFactory(new PropertyValueFactory("nomPro"));
         cat.setCellValueFactory(new PropertyValueFactory("idCategorie"));
         qte.setCellValueFactory(new PropertyValueFactory("qte"));
@@ -134,7 +133,27 @@ public class StockController {
                 return cell;
             }
         };
+        Callback<TableColumn<Produit,String>,TableCell<Produit,String>> codeCell = new Callback() {
+            @Override
+            public TableCell<Produit,String> call(Object param) {
+                final TableCell<Produit,String> cell = new TableCell<Produit,String>(){
+                    @Override
+                    public void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setText(null);
+                        } else {
+                            Produit product = getTableView().getItems().get(getIndex());
+                            setText(product.getCode());
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        
         image.setCellFactory(imageCell);
+        code.setCellFactory(codeCell); 
     }
     
     void setData(){

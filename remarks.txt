@@ -1,11 +1,14 @@
 // put paginations
 
-prend en compte les demi
-
 gere la peremtion: changer de couleur en fonction
 
-changer la fonction pour les remisses
-
-modifier table gestionstocks: ajouter justificatif
-
 get all the factures where a produit is found
+
+getAll details for a product:
+	qte
+	factures during a certain period
+
+revenue calculator during a period of time
+
+Statistiques:
+	

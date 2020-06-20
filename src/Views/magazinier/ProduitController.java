@@ -30,6 +30,8 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import alimentation.Gestionstock;
 import java.io.FileNotFoundException;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Pagination;
@@ -52,8 +54,7 @@ public class ProduitController {
     @FXML
     private JFXButton add;
 
-    @FXML
-    private FlowPane displayArea;
+    private FlowPane displayArea = new FlowPane();
     
     @FXML
     private TextField searchBox;
@@ -64,8 +65,16 @@ public class ProduitController {
      @FXML
     private Pagination pagination;
 
-
-    ObservableList<Produit> data;
+     private void setFlowPane(){
+         displayArea.setAlignment(Pos.CENTER_LEFT);
+         displayArea.setPadding(new Insets(25,25,25,25)); 
+         displayArea.setHgap(40);
+         displayArea.setVgap(50); 
+         displayArea.setStyle("-fx-background-color: white"); 
+     }
+    ObservableList<Produit> data = FXCollections.observableArrayList();
+    
+    ObservableList<Produit> allData = FXCollections.observableList(Produit.getProduits());
     
     @FXML
     void add(ActionEvent event) throws IOException {
@@ -240,20 +249,40 @@ public class ProduitController {
     }
     
     void show_Allproduits() throws IOException{
-        data = FXCollections.observableList(Produit.getProduits());
+        data.addAll(allData);
         data.sort(Produit.sortByIdDesc); 
         show_produits(data);
     }
     
+    void setPagination(){
+        pagination.setPageCount(10); 
+        Callback<Integer,Node> factory = new Callback<Integer,Node>() {
+           
+           @Override
+           public Node call(Integer param) {
+               data.clear();
+               for(int i=(param) * 12;(i<(param+1)*12) && (i<allData.size());i++){
+                   data.add(allData.get(i));
+                   try {
+                       show_produits(data);
+                   } catch (IOException ex) {
+                       System.out.println(ex.getMessage()); 
+                   }
+               }
+               return displayArea;
+           }
+        };
+        pagination.setPageFactory(factory); 
+    }
     
     @FXML
     void initialize() throws IOException {
         assert categorie != null : "fx:id=\"categorie\" was not injected: check your FXML file 'Produit.fxml'.";
         assert add != null : "fx:id=\"add\" was not injected: check your FXML file 'Produit.fxml'.";
-        assert displayArea != null : "fx:id=\"displayArea\" was not injected: check your FXML file 'Produit.fxml'.";
-        show_Allproduits();
+        setFlowPane();
+        //show_Allproduits();
         ObservableList<Categorie> datac = FXCollections.observableArrayList(Categorie.getCategories());
         categorie.setItems(datac);
- 
+        setPagination();
     }
 }

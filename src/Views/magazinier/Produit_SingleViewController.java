@@ -53,7 +53,7 @@ public class Produit_SingleViewController {
     private final String imagePath = Constants.Products_Image_Path;
     
     public void set() throws FileNotFoundException{
-        code.setText("N° "+product.getCodePro().toString()); 
+        code.setText("N° "+product.getCode()); 
         nom.setText(product.getNomPro());
         try{
             FileInputStream inputstream = new FileInputStream(imagePath + product.getCodePro().toString() + ".jpg"); 

@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -50,14 +49,9 @@
             </HBox>
             <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
                <content>
-                  <FlowPane fx:id="displayArea" alignment="CENTER" hgap="50.0" style="-fx-background-color: white;" vgap="50.0">
-                     <padding>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                     </padding>
-                  </FlowPane>
+                  <Pagination fx:id="pagination" maxPageIndicatorCount="5" pageCount="100" />
                </content>
             </ScrollPane>
-            <Pagination fx:id="pagination" maxPageIndicatorCount="5" pageCount="100" />
          </children>
       </VBox>
    </children>

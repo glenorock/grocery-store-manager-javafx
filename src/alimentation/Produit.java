@@ -373,6 +373,25 @@ public class Produit implements Serializable ,EntityClasses{
         this.qte = qte;
     }
     
+    public String getCode(){
+        String code = "";
+        String pro = this.codePro.toString();
+        for(int i=0;i<pro.length();i++){
+            code += pro.charAt(i);
+        }
+        for(int i=pro.length();i<6;i++){
+            code = "0" + code;
+        }
+        String result = "";
+        for(int i=0;i<code.length();i++){
+            if(i == 3){
+                result += '-';
+            }
+            result+= code.charAt(i);
+        }
+        return result;
+    }
+    
     
     
 }
