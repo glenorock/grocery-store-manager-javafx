@@ -49,7 +49,7 @@
             </HBox>
             <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
                <content>
-                  <Pagination fx:id="pagination" maxPageIndicatorCount="5" pageCount="100" />
+                  <Pagination fx:id="pagination" maxPageIndicatorCount="5" pageCount="10" />
                </content>
             </ScrollPane>
          </children>

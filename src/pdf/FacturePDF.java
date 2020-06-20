@@ -102,7 +102,7 @@ public class FacturePDF {
         table.setHeaderRows(1);
 
         list.stream().map((data) -> {
-            table.addCell(data.getCodePro().getId().toString());
+            table.addCell(data.getCodePro().getCode());
             return data;
         }).map((data) -> {
             table.addCell(data.getCodePro().toString());

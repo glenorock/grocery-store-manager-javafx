@@ -392,6 +392,19 @@ public class Produit implements Serializable ,EntityClasses{
         return result;
     }
     
-    
+    public static Integer codeToInt(String code){
+        try{
+            if(code.charAt(0) != '0'){
+                return Integer.valueOf(code.replaceAll("-",""));
+            }
+            String res = "";
+            for(int i= code.indexOf('-') +1 ; i<code.length();i++){
+                res += code.charAt(i);
+            }
+            return Integer.valueOf(res);
+        }catch(NumberFormatException e){
+            return 0;
+        }
+    }
     
 }

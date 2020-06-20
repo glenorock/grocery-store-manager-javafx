@@ -195,7 +195,8 @@ public class FacturationController {
     @FXML
     void ajouter(ActionEvent event) {
         try{
-            Produit pro = Produit.getProduitByCode(Integer.valueOf(codePro.getText())); 
+            String code = codePro.getText();
+            Produit pro = Produit.getProduitByCode(Produit.codeToInt(code)); 
             if (pro == null) return;
             if(pro.getWholeOnly()){
                 try{
@@ -247,7 +248,8 @@ public class FacturationController {
     void show_produits(){
         area.getChildren().clear();
         try {
-            Produit pro = Produit.getProduitByCode(Integer.valueOf(codePro.getText()));
+            String code = codePro.getText();
+            Produit pro = Produit.getProduitByCode(Produit.codeToInt(code)); 
             if (pro == null) return;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("..//magazinier//Produit_SingleView.fxml"));
             VBox grid = loader.load();
